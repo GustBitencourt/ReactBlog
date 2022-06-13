@@ -11,10 +11,10 @@ export const Header = () => {
 
             <ul className={styles.links_list}>
                 <li>
-                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')} >Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/about">About</NavLink>
+                    <NavLink to="/about" className={({ isActive }) => (isActive ? styles.active : '')} >About</NavLink>
                 </li>
             </ul>
 

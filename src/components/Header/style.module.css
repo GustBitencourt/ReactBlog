@@ -8,6 +8,7 @@
 
 .brand {
   font-size: 1.2em;
+  text-decoration: none;
 }
 
 .brand span {
@@ -26,6 +27,7 @@
 
 .links_list li a {
   padding: 0.4em 0.6em;
+  text-decoration: none;
 }
 
 .active {
