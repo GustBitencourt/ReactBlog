@@ -5,3 +5,30 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+input::placeholder, 
+textarea::placeholder {
+  font-family: "Montserrat", sans-serif;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+a, 
+nav button {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: 0.3s ease-in-out;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+a:hover,
+nav button:hover {
+  color: #bbb;
+}
+
