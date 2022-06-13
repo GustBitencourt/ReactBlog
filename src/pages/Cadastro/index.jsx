@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import styles from './styles.module.css';
+import { useAuthentication } from '../../hooks/useAuthentication';
+
+import style from './styles.module.css';
 
 export const Cadastro = () => {
   const [displayName, setDisplayNome] = useState('');
@@ -8,7 +10,9 @@ export const Cadastro = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (event) => {
+  const { createUser, error: authError, loading } = useAuthentication()
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     setError('');
@@ -24,11 +28,20 @@ export const Cadastro = () => {
       return;
     }
 
+    const res = await createUser(user);
+
     console.log('user', user);
   }
 
+  //verifica se tem o erro no authentication do firebase
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
+
   return (
-    <div className={styles.register}>
+    <div className={style.register}>
         <h1>Cadastre-se para postar!</h1>
         <p>Crie seu usuário e compartilhe suas histórias</p>
         <form onSubmit={handleSubmit}>
@@ -80,7 +93,9 @@ export const Cadastro = () => {
             />
           </label>
 
-          <button className='btn'>Cadastrar</button>
+          {!loading && <button className='btn'>Cadastrar</button>}
+          {loading && <button className='btn' disabled>Aguarde... </button>}
+
 
           {
             error && <p className='error'>{error}</p>
