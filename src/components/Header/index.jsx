@@ -8,7 +8,8 @@ import styles from "./style.module.css";
 
 export const Header = () => {
   const { user } = useAuthValue();
-  
+  const { logout } = useAuthentication();
+
   return (
     <nav className={styles.navbar}>
       <NavLink className={styles.brand} to="/">
@@ -46,23 +47,23 @@ export const Header = () => {
         )}
         {user && (
           <>
-          <li>
-            <NavLink
-              to="/posts/create"
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              Novo Post
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) => (isActive ? styles.active : "")}
-            >
-              Dashboard
-            </NavLink>
-          </li>
-        </>
+            <li>
+              <NavLink
+                to="/posts/create"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Novo Post
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          </>
         )}
 
         <li>
@@ -73,6 +74,12 @@ export const Header = () => {
             About
           </NavLink>
         </li>
+
+        {user && (
+          <li>
+            <button onClick={logout}>Logout</button>
+          </li>
+        )}
       </ul>
     </nav>
   );
