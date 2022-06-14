@@ -57,8 +57,8 @@ export const useAuthentication = () => {
         systemErrorMessage = "Ocorreu algum erro, tente mais tarde";
       }
 
-      setLoading(false);
       setError(systemErrorMessage);
+      setLoading(false);
     }
   };
 
@@ -66,6 +66,35 @@ export const useAuthentication = () => {
   const logout = () => {
     checkIfIsCancelled();
     signOut(auth);
+  }
+
+  //login
+  const login = async (data) => {
+    checkIfIsCancelled();
+    setLoading(true);
+    setError(false);
+
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      setLoading(false);
+
+    } catch (error) {
+      let systemErrorMessage;
+
+      if (error.message.includes("user-not-found")) {
+        systemErrorMessage = "Usuário não encontrado";
+
+      } else if (error.message.includes("wrong-password")) {
+        systemErrorMessage = "Senha incorreta";
+
+      } else {
+        systemErrorMessage = "Ocorreu algum erro, tente mais tarde";
+      }
+
+      setError(systemErrorMessage);
+      setLoading(false);
+
+    }
   }
 
   //coloca o cancelled como true assim que sair da pagina - evitando memory leak
@@ -79,5 +108,6 @@ export const useAuthentication = () => {
     error,
     loading,
     logout,
+    login,
   };
 };
