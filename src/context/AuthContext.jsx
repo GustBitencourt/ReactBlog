@@ -12,7 +12,7 @@ export const AuthContextProvider = ({ children, value }) => {
     )
 }
 
-//uso do contextp
+//uso do contexto
 export const useAuthValue = () => {
     return useContext(AuthContext);
 }

@@ -14,6 +14,8 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Login } from "./pages/Login";
 import { Cadastro } from "./pages/Cadastro";
+import { CreatePost } from './pages/CreatePost';
+import { Dashboard } from './pages/Dashboard';
 
 //components
 import { Header } from "./components/Header";
@@ -31,7 +33,6 @@ function App() {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
-
   }, [auth]);
 
   if(loadingUser) {
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <div className="App">    
-      <AuthContextProvider value={user}>
+      <AuthContextProvider value={{ user }}>
         <BrowserRouter>
           <Header />
           <div className="container">
@@ -49,6 +50,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Cadastro />} />
+              <Route path="/posts/create" element={<CreatePost />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </div>
           <Footer />
