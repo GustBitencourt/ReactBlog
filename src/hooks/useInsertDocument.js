@@ -9,9 +9,9 @@ const initialState = {
 
 const insertReducer = (state, action) => {
     switch (action.type) {
-        case 'LOADING':
+        case "LOADING":
             return {loading: true, error: null};
-        case 'INSERTED_DOC':
+        case "INSERTED_DOC":
             return {loading: false, error: null};
         case "ERROR":
             return {loading: false, error: action.payload};
@@ -55,17 +55,11 @@ export const useInsertDocument = (docCollection) => {
             });
         }
     }
-}
-
-//lida com o memory leak
-useEffect(() => {
-    return () => {
-        setCancelled(true);
-    }
-})
-
-
-return {
-    insertDocument,
-    response,
+    
+    //lida com o memory leak
+    useEffect(() => {
+        return () => setCancelled(true);
+      }, []);
+    
+    return { insertDocument, response };
 }
