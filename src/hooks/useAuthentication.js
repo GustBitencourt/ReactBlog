@@ -93,7 +93,6 @@ export const useAuthentication = () => {
 
       setError(systemErrorMessage);
       setLoading(false);
-
     }
   }
 
