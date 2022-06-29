@@ -22,12 +22,11 @@ export const Home = () => {
   return (
     <div className={styles.home}>
         <h1>Veja os posts recentes</h1>
-        <form className={styles.search_form}>
+        <form onSubmit={handleSubmit} className={styles.search_form}>
             <input 
               type="text" 
               placeholder="Busque por tags" 
               name='query'
-              value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
             <button className='btn btn-dark'>Buscar</button>
