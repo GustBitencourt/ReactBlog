@@ -17,6 +17,7 @@ import { Cadastro } from "./pages/Cadastro";
 import { CreatePost } from "./pages/CreatePost";
 import { Dashboard } from "./pages/Dashboard";
 import { Search } from "./pages/Search";
+import { Post } from "./pages/Post";
 
 //components
 import { Header } from "./components/Header";
@@ -50,6 +51,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/search" element={<Search />} />
+              <Route path="/posts/:id" element={<Post />} />
               <Route
                 path="/login"
                 element={!user ? <Login /> : <Navigate to="/" />}
