@@ -16,6 +16,7 @@ import { Login } from "./pages/Login";
 import { Cadastro } from "./pages/Cadastro";
 import { CreatePost } from "./pages/CreatePost";
 import { Dashboard } from "./pages/Dashboard";
+import { Search } from "./pages/Search";
 
 //components
 import { Header } from "./components/Header";
@@ -48,6 +49,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/search" element={<Search />} />
               <Route
                 path="/login"
                 element={!user ? <Login /> : <Navigate to="/" />}

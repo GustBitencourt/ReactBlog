@@ -7,11 +7,16 @@ import { PostDetail } from '../../components/PostDetail';
 import styles from './style.module.css';
 
 export const Home = () => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const { documents: posts, loading, error } = useFetchDocuments("posts") 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (query) {
+      return navigate(`/search?q=${query}`);
+    }
   }
 
   return (
