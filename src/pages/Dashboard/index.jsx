@@ -9,7 +9,7 @@ export const Dashboard = () => {
   const uid = user.uid;
 
   //posts do usuario
-  const posts = [];
+  const { documents: posts, loading } = useFetchDocuments("posts", null, uid);
 
   return (
     <div>
@@ -22,11 +22,11 @@ export const Dashboard = () => {
           </div>
         ) : (
           <div>
-            
+                        
           </div>
-        )
+        )}
 
-        }
+        {posts && posts.map(post => <h3>{post.title}</h3>)}
     </div>
   )
 }
